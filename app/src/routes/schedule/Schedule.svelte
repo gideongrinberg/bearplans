@@ -110,10 +110,10 @@
 
 <style>
 	.schedule-container {
-		font-family: system-ui, -apple-system, sans-serif;
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 		background: white;
-		border-radius: 8px;
-		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+		border-radius: 12px;
+		box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 		overflow: hidden;
 	}
 	

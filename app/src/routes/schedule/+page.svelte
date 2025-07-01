@@ -2,11 +2,14 @@
 	import type { Catalog, Section } from '$lib/catalog';
 	import { getValidSchedules } from '$lib/schedule';
 	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
 	import Schedule from './Schedule.svelte';
 
 	let { data } = $props();
 	let selectedCatalog: string = $state('');
 	let selectedCourses: string[] = $state([]);
+	let currentScheduleIndex = $state(0);
+	
 	onMount(() => {
 		let urlParams = new URLSearchParams(window.location.search);
 		selectedCatalog = urlParams.get('catalog') ?? 'Fall 2025 Undergraduate';
@@ -20,38 +23,209 @@
 		});
 	};
 
-	const getDate = (weekday: string, time: number) => {
-		const days: Record<string, number> = {
-			Sun: 0,
-			Mon: 1,
-			Tue: 2,
-			Wed: 3,
-			Thu: 4,
-			Fri: 5,
-			Sat: 6
-		};
+	function goBack() {
+		goto(`/courses?catalog=${encodeURIComponent(selectedCatalog)}`);
+	}
 
-		const today = new Date();
-		const todayDay = today.getDay();
-		const targetDay = days[weekday];
-		const delta = (targetDay - todayDay + 7) % 7 || 7;
+	function nextSchedule(totalSchedules: number) {
+		currentScheduleIndex = (currentScheduleIndex + 1) % totalSchedules;
+	}
 
-		const date = new Date();
-		date.setDate(date.getDate() + delta);
-		date.setHours(0, 0, 0, 0);
-		date.setMinutes(time);
-
-		return date;
-	};
+	function prevSchedule(totalSchedules: number) {
+		currentScheduleIndex = (currentScheduleIndex - 1 + totalSchedules) % totalSchedules;
+	}
 </script>
 
 {#if selectedCourses.length > 0}
-	{#await getSchedules(selectedCourses)}
-		<p>Getting schedules, please wait...</p>
-	{:then schedules}
-		<Schedule schedule={schedules[0]}></Schedule>
-		<!-- <pre>
-			{JSON.stringify(schedules, null, 4)}
-        </pre> -->
-	{/await}
+	<div class="schedule-page">
+		<div class="schedule-header">
+			<h1 class="page-title">Your Schedule Options</h1>
+			<p class="subtitle">Here are all possible schedules for your selected courses.</p>
+		</div>
+
+		{#await getSchedules(selectedCourses)}
+			<div class="page-card">
+				<div class="loading">
+					<div class="loading-spinner"></div>
+					<p>Generating your schedules...</p>
+				</div>
+			</div>
+		{:then schedules}
+			{#if schedules.length > 0}
+				<div class="schedule-controls">
+					{#if schedules.length > 1}
+						<button class="btn" onclick={() => prevSchedule(schedules.length)}>
+							← Previous
+						</button>
+					{/if}
+					
+					<div class="schedule-info">
+						<span class="schedule-counter">
+							Schedule {currentScheduleIndex + 1} of {schedules.length}
+						</span>
+					</div>
+					
+					{#if schedules.length > 1}
+						<button class="btn" onclick={() => nextSchedule(schedules.length)}>
+							Next →
+						</button>
+					{/if}
+				</div>
+
+				<div class="schedule-wrapper">
+					<Schedule schedule={schedules[currentScheduleIndex]}></Schedule>
+				</div>
+			{:else}
+				<div class="page-card">
+					<div class="no-schedules">
+						<h3>No Valid Schedules Found</h3>
+						<p>Unfortunately, there are no valid schedules possible with your selected courses due to time conflicts.</p>
+						<p>Try removing some courses or selecting different sections.</p>
+					</div>
+				</div>
+			{/if}
+		{/await}
+
+		<div class="navigation">
+			<button class="btn" onclick={goBack}>
+				← Back to Courses
+			</button>
+			<div class="step-indicator">
+				<span>Step 3 of 3</span>
+			</div>
+			<div></div>
+		</div>
+	</div>
+{:else}
+	<div class="page-card">
+		<div class="no-courses">
+			<h3>No Courses Selected</h3>
+			<p>Please go back and select some courses to generate schedules.</p>
+			<button class="btn btn-primary" onclick={goBack}>
+				Select Courses
+			</button>
+		</div>
+	</div>
 {/if}
+
+<style>
+	.schedule-page {
+		width: 100%;
+		max-width: 1400px;
+		margin: 0 auto;
+	}
+
+	.schedule-header {
+		text-align: center;
+		margin-bottom: 2rem;
+		color: white;
+	}
+
+	.schedule-header .page-title {
+		color: white;
+		text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		margin-bottom: 0.5rem;
+	}
+
+	.subtitle {
+		color: rgba(255, 255, 255, 0.9);
+		font-size: 1.125rem;
+		margin: 0;
+	}
+
+	.schedule-controls {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 1.5rem;
+		background: white;
+		padding: 1rem 1.5rem;
+		border-radius: 12px;
+		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+	}
+
+	.schedule-info {
+		font-weight: 500;
+		color: #374151;
+	}
+
+	.schedule-counter {
+		font-size: 1.125rem;
+	}
+
+	.schedule-wrapper {
+		margin-bottom: 2rem;
+	}
+
+	.loading {
+		text-align: center;
+		padding: 3rem 2rem;
+	}
+
+	.loading-spinner {
+		width: 40px;
+		height: 40px;
+		border: 4px solid #e5e7eb;
+		border-top: 4px solid #4f46e5;
+		border-radius: 50%;
+		animation: spin 1s linear infinite;
+		margin: 0 auto 1rem;
+	}
+
+	@keyframes spin {
+		0% { transform: rotate(0deg); }
+		100% { transform: rotate(360deg); }
+	}
+
+	.no-schedules, .no-courses {
+		text-align: center;
+		padding: 2rem;
+	}
+
+	.no-schedules h3, .no-courses h3 {
+		color: #dc2626;
+		margin-bottom: 1rem;
+	}
+
+	.no-schedules p, .no-courses p {
+		color: #6b7280;
+		margin-bottom: 1rem;
+	}
+
+	.navigation {
+		background: white;
+		padding: 1rem 1.5rem;
+		border-radius: 12px;
+		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+	}
+	
+	@media (max-width: 768px) {
+		.schedule-controls {
+			flex-direction: column;
+			gap: 1rem;
+			text-align: center;
+		}
+		
+		.schedule-controls .btn {
+			width: 100%;
+		}
+		
+		.schedule-info {
+			order: -1;
+		}
+	}
+	
+	@media (max-width: 480px) {
+		.schedule-header .page-title {
+			font-size: 1.5rem;
+		}
+		
+		.schedule-controls {
+			padding: 1rem;
+		}
+		
+		.navigation {
+			padding: 1rem;
+		}
+	}
+</style>

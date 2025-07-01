@@ -12,10 +12,34 @@
 	}
 </script>
 
-<label for="catalogSelect">Select a semester:</label>
-<select id="catalogSelect" bind:value={selectedCatalog}>
-	{#each catalogs as catalog}
-		<option value={catalog}>{catalog}</option>
-	{/each}
-</select>
-<button onclick={goToNext}>Next</button>
+<div class="page-card">
+	<h1 class="page-title">Course Scheduler</h1>
+	<p class="subtitle">Select your semester to get started planning your schedule.</p>
+	
+	<div class="form-group">
+		<label for="catalogSelect" class="form-label">Select a semester:</label>
+		<select id="catalogSelect" class="form-select" bind:value={selectedCatalog}>
+			{#each catalogs as catalog}
+				<option value={catalog}>{catalog}</option>
+			{/each}
+		</select>
+	</div>
+	
+	<div class="navigation">
+		<div class="step-indicator">
+			<span>Step 1 of 3</span>
+		</div>
+		<button class="btn btn-primary" onclick={goToNext}>
+			Select Courses →
+		</button>
+	</div>
+</div>
+
+<style>
+	.subtitle {
+		text-align: center;
+		color: #6b7280;
+		margin-bottom: 2rem;
+		font-size: 1.125rem;
+	}
+</style>
