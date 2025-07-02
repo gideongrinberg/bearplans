@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="./favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+
+			body {
+				margin: 0;
+				font-family:
+					-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+					sans-serif;
+				font-size: 16px;
+				line-height: 1.6;
+				color: #1f2937;
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				min-height: 100vh;
+			}
+
+			.app-container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 2rem;
+				min-height: 100vh;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+			}
+
+			.page-card {
+				background: white;
+				border-radius: 12px;
+				box-shadow:
+					0 20px 25px -5px rgba(0, 0, 0, 0.1),
+					0 10px 10px -5px rgba(0, 0, 0, 0.04);
+				padding: 2rem;
+				width: 100%;
+				max-width: 600px;
+			}
+
+			.page-title {
+				font-size: 1.875rem;
+				font-weight: 700;
+				color: #1f2937;
+				margin: 0 0 1.5rem 0;
+				text-align: center;
+			}
+
+			.btn {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				padding: 0.75rem 1.5rem;
+				font-size: 1rem;
+				font-weight: 500;
+				border-radius: 8px;
+				border: none;
+				cursor: pointer;
+				transition: all 0.2s ease;
+				text-decoration: none;
+				min-width: 120px;
+			}
+
+			.btn-primary {
+				background: #4f46e5;
+				color: white;
+			}
+
+			.btn-primary:hover {
+				background: #4338ca;
+				transform: translateY(-1px);
+				box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+			}
+
+			.form-group {
+				margin-bottom: 1.5rem;
+			}
+
+			.form-label {
+				display: block;
+				font-weight: 500;
+				color: #374151;
+				margin-bottom: 0.5rem;
+			}
+
+			.form-select,
+			.form-input {
+				width: 100%;
+				padding: 0.75rem;
+				border: 1px solid #d1d5db;
+				border-radius: 8px;
+				font-size: 1rem;
+				transition:
+					border-color 0.2s ease,
+					box-shadow 0.2s ease;
+			}
+
+			.form-select:focus,
+			.form-input:focus {
+				outline: none;
+				border-color: #4f46e5;
+				box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+			}
+
+			.navigation {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-top: 2rem;
+				gap: 1rem;
+			}
+
+			.step-indicator {
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+				font-size: 0.875rem;
+				color: #6b7280;
+			}
+
+			/* Responsive Design */
+			@media (max-width: 768px) {
+				.app-container {
+					padding: 1rem;
+				}
+
+				.page-card {
+					padding: 1.5rem;
+				}
+
+				.page-title {
+					font-size: 1.5rem;
+				}
+
+				.navigation {
+					flex-direction: column;
+					gap: 1rem;
+					text-align: center;
+				}
+
+				.btn {
+					width: 100%;
+				}
+
+				.navigation .btn {
+					width: auto;
+					min-width: 100px;
+				}
+			}
+
+			@media (max-width: 480px) {
+				.app-container {
+					padding: 0.5rem;
+				}
+
+				.page-card {
+					padding: 1rem;
+					border-radius: 8px;
+				}
+
+				.page-title {
+					font-size: 1.25rem;
+				}
+
+				body {
+					font-size: 14px;
+				}
+			}
+		</style>
+		
+		<link href="./_app/immutable/assets/2.nNYFTmPC.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.BjcbcJNj.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/0QoaFZke.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/DD_8n6WL.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/AhRT4trG.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.CyIGVV8O.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/DRtSWgzy.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/CQas00RX.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/kMYR6PAW.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/Dap81m_B.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/0.DPKADhUR.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/BmowdvsN.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/2.BQS0ARX2.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/BqzCvA3l.js">
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div class="app-container">
+			<div style="display: contents"><!--[--><!--[--><!----><!----><div class="page-card"><h1 class="page-title">Course Scheduler</h1> <p class="subtitle svelte-omv660">Select your semester to get started planning your schedule.</p> <div class="form-group"><label for="catalogSelect" class="form-label">Select a semester:</label> <select id="catalogSelect" class="form-select"><!--[--><option value="Fall 2025" selected>Fall 2025</option><!--]--></select></div> <div class="navigation"><div class="step-indicator"><span>Step 1 of 3</span></div> <button class="btn btn-primary">Select Courses →</button></div></div><!----><!----><!----><!--]--> <!--[!--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_1j170n3 = {
+						base: new URL(".", location).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("./_app/immutable/entry/start.BjcbcJNj.js"),
+						import("./_app/immutable/entry/app.CyIGVV8O.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 2],
+							data: [null,{type:"data",data:{catalogs:["Fall 2025"]},uses:{}}],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+		</div>
+	</body>
+</html>
