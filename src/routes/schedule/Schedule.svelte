@@ -38,6 +38,13 @@
 		timeLabels.push({ time: t, label: `${displayHour}:00 ${ampm}` });
 	}
 
+	// Calculate positions for time labels
+	function getTimeLabelStyle(index) {
+		const totalLabels = timeLabels.length;
+		const percentage = totalLabels > 1 ? (index / (totalLabels - 1)) * 100 : 0;
+		return `top: ${percentage}%;`;
+	}
+
 	// Group sections by day
 	const sectionsByDay = days.map(() => []);
 	schedule.forEach((section) => {
@@ -89,25 +96,20 @@
 		const ampm = hour < 12 ? 'AM' : 'PM';
 		return `${displayHour}:${min.toString().padStart(2, '0')} ${ampm}`;
 	}
-
-	// function getColor(index) {
-	// 	const colors =
-	// 	return colors[index % colors.length];
-	// }
 </script>
 
 <div class="schedule-container">
 	<div class="header">
 		<div class="time-header"></div>
-		{#each days as day}
+		{#each days as day (day)}
 			<div class="day-header">{day}</div>
 		{/each}
 	</div>
 
 	<div class="calendar-body">
 		<div class="time-column">
-			{#each timeLabels as { label }}
-				<div class="time-label">{label}</div>
+			{#each timeLabels as { label }, index (`${label}-${index}`)}
+				<div class="time-label" style={getTimeLabelStyle(index)}>{label}</div>
 			{/each}
 		</div>
 
@@ -192,34 +194,6 @@
 		color: #6b7280;
 		transform: translateY(-50%);
 		font-weight: 500;
-	}
-
-	.time-label:nth-child(1) {
-		top: 0%;
-	}
-	.time-label:nth-child(2) {
-		top: calc(100% / (var(--time-slots, 8) - 1));
-	}
-	.time-label:nth-child(3) {
-		top: calc(200% / (var(--time-slots, 8) - 1));
-	}
-	.time-label:nth-child(4) {
-		top: calc(300% / (var(--time-slots, 8) - 1));
-	}
-	.time-label:nth-child(5) {
-		top: calc(400% / (var(--time-slots, 8) - 1));
-	}
-	.time-label:nth-child(6) {
-		top: calc(500% / (var(--time-slots, 8) - 1));
-	}
-	.time-label:nth-child(7) {
-		top: calc(600% / (var(--time-slots, 8) - 1));
-	}
-	.time-label:nth-child(8) {
-		top: calc(700% / (var(--time-slots, 8) - 1));
-	}
-	.time-label:nth-child(n + 9) {
-		top: 100%;
 	}
 
 	.days-container {
