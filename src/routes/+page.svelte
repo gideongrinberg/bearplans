@@ -15,7 +15,7 @@
 
 	onMount(() => {
 		console.log(base);
-	})
+	});
 </script>
 
 <div class="page-card">

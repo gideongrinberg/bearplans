@@ -1,8 +1,8 @@
-import { goto } from "$app/navigation";
-import { base } from "$app/paths";
+import { goto } from '$app/navigation';
+import { base } from '$app/paths';
 
 const gotoBase = (path: string) => {
-    goto(`${base}/${path}`)
+	goto(`${base}/${path}`);
 };
 
 export { gotoBase as goto };
