@@ -4,20 +4,41 @@
 		<meta charset="utf-8" />
 		<link rel="icon" href="./favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 		<style>
+			:root {
+				/* WashU Brand Colors */
+				--washu-red: #BA0C2F;
+				--washu-green: #215732;
+				--washu-dark-red: #971B2F;
+				--washu-dark-green: #13322B;
+				--washu-coral: #FF6D6A;
+				--washu-teal: #007D8A;
+				--washu-gold: #F1B434;
+				--washu-mint: #B5E3D8;
+				--washu-gray: #D9D9D9;
+				--washu-warm-gray: #D7D2CB;
+				--washu-black: #000000;
+				--washu-white: #FFFFFF;
+				
+				/* Typography */
+				--font-heading: 'Crimson Text', Georgia, serif;
+				--font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+			}
+
 			* {
 				box-sizing: border-box;
 			}
 
 			body {
 				margin: 0;
-				font-family:
-					-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
-					sans-serif;
+				font-family: var(--font-body);
 				font-size: 16px;
 				line-height: 1.6;
-				color: #1f2937;
-				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				color: var(--washu-black);
+				background: linear-gradient(135deg, var(--washu-red) 0%, var(--washu-dark-red) 100%);
 				min-height: 100vh;
 			}
 
@@ -44,9 +65,10 @@
 			}
 
 			.page-title {
+				font-family: var(--font-heading);
 				font-size: 1.875rem;
-				font-weight: 700;
-				color: #1f2937;
+				font-weight: 600;
+				color: var(--washu-red);
 				margin: 0 0 1.5rem 0;
 				text-align: center;
 			}
@@ -67,12 +89,12 @@
 			}
 
 			.btn-primary {
-				background: #4f46e5;
-				color: white;
+				background: var(--washu-red);
+				color: var(--washu-white);
 			}
 
 			.btn-primary:hover {
-				background: #4338ca;
+				background: var(--washu-dark-red);
 				transform: translateY(-1px);
 				box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 			}
@@ -84,7 +106,7 @@
 			.form-label {
 				display: block;
 				font-weight: 500;
-				color: #374151;
+				color: var(--washu-black);
 				margin-bottom: 0.5rem;
 			}
 
@@ -103,8 +125,8 @@
 			.form-select:focus,
 			.form-input:focus {
 				outline: none;
-				border-color: #4f46e5;
-				box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+				border-color: var(--washu-red);
+				box-shadow: 0 0 0 3px rgba(186, 12, 47, 0.1);
 			}
 
 			.navigation {
@@ -173,37 +195,37 @@
 			}
 		</style>
 		
-		<link href="./_app/immutable/assets/4.hhk08KVA.css" rel="stylesheet">
-		<link rel="modulepreload" href="./_app/immutable/entry/start.CwrAILtw.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/Ctk5V1g8.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/DD_8n6WL.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/AhRT4trG.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/app.MwRHybBu.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/DRtSWgzy.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/CQas00RX.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/kMYR6PAW.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/Dap81m_B.js">
-		<link rel="modulepreload" href="./_app/immutable/nodes/0.DPKADhUR.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/BmowdvsN.js">
-		<link rel="modulepreload" href="./_app/immutable/nodes/4.Dcx77T_9.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/BqzCvA3l.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/9wtmSZGG.js">
+		<link href="./_app/immutable/assets/4.jFDvu2BG.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.CGmP2TS0.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/CEtcRXBN.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/CuBYgweG.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/D23r07B5.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.Cvq1Ow_m.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/BYKqv92l.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/CLTa46Dl.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/CtSaMWuN.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/CPrFxVFw.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/0.CaK-_hHj.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/DI7MgjTT.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/4.6jXHvpCd.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/CpJELWDC.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/CVwI9q4e.js">
 	</head>
 	<body data-sveltekit-preload-data="hover">
 		<div class="app-container">
-			<div style="display: contents"><!--[--><!--[--><!----><!----><!--[!--><div class="page-card svelte-175h8my"><div class="no-courses svelte-175h8my"><h3 class="svelte-175h8my">No Courses Selected</h3> <p class="svelte-175h8my">Please go back and select some courses to generate schedules.</p> <button class="btn btn-primary svelte-175h8my">Select Courses</button></div></div><!--]--><!----><!----><!----><!--]--> <!--[!--><!--]--><!--]-->
+			<div style="display: contents"><!--[--><!--[--><!----><!----><!--[!--><div class="page-card svelte-fu93ie"><div class="no-courses svelte-fu93ie"><h3 class="svelte-fu93ie">No Courses Selected</h3> <p class="svelte-fu93ie">Please go back and select some courses to generate schedules.</p> <button class="btn btn-primary svelte-fu93ie">Select Courses</button></div></div><!--]--><!----><!----><!----><!--]--> <!--[!--><!--]--><!--]-->
 			
 			<script>
 				{
-					__sveltekit_sq77kv = {
+					__sveltekit_12sm7a6 = {
 						base: new URL(".", location).pathname.slice(0, -1)
 					};
 
 					const element = document.currentScript.parentElement;
 
 					Promise.all([
-						import("./_app/immutable/entry/start.CwrAILtw.js"),
-						import("./_app/immutable/entry/app.MwRHybBu.js")
+						import("./_app/immutable/entry/start.CGmP2TS0.js"),
+						import("./_app/immutable/entry/app.Cvq1Ow_m.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
 							node_ids: [0, 4],
