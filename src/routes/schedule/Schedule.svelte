@@ -26,8 +26,8 @@
 	minTime = Math.floor(minTime / 60) * 60;
 	maxTime = Math.ceil(maxTime / 60) * 60;
 
-	minTime = Math.min(minTime, 8*60);
-	maxTime = Math.max(maxTime, 15*60);
+	minTime = Math.min(minTime, 8 * 60);
+	maxTime = Math.max(maxTime, 15 * 60);
 
 	// Generate time labels
 	const timeLabels = [];
@@ -48,6 +48,13 @@
 			}
 		});
 	});
+
+	function shouldHideInstructor(section) {
+		const totalMinutes = maxTime - minTime;
+		const heightPercent = ((section.end - section.start) / totalMinutes) * 100;
+		const calendarHeight = 600;
+		return Math.floor((heightPercent / 100) * calendarHeight) < 36;
+	}
 
 	// Calculate position and height for a section
 	function getSectionStyle(section) {
@@ -104,12 +111,13 @@
 							<div
 								class="section"
 								style="{getSectionStyle(section)} background-color: {getColor(i)};"
+								title="{section.id} ({formatTime(section.start)} - {formatTime(section.end)}){section.instructor ? `, taught by ${section.instructor}` : ''}"
 							>
 								<div class="section-time">
 									{formatTime(section.start)} - {formatTime(section.end)}
 								</div>
 								<div class="section-instructor">{section.id}</div>
-								{#if section.instructor}
+								{#if section.instructor && !shouldHideInstructor(section)}
 									<div class="section-instructor">{section.instructor}</div>
 								{/if}
 							</div>
