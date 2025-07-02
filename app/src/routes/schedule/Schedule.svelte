@@ -218,4 +218,75 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 	}
+	
+	@media (max-width: 768px) {
+		.header {
+			grid-template-columns: 60px repeat(7, 1fr);
+		}
+		
+		.calendar-body {
+			grid-template-columns: 60px 1fr;
+		}
+		
+		.day-header {
+			padding: 8px 4px;
+			font-size: 12px;
+		}
+		
+		.time-label {
+			font-size: 10px;
+			right: 4px;
+		}
+		
+		.section {
+			padding: 2px 4px;
+			font-size: 11px;
+		}
+		
+		.section-time {
+			font-size: 10px;
+		}
+		
+		.section-instructor {
+			font-size: 9px;
+		}
+	}
+	
+	@media (max-width: 480px) {
+		.schedule-container {
+			border-radius: 8px;
+		}
+		
+		.header {
+			grid-template-columns: 50px repeat(7, 1fr);
+		}
+		
+		.calendar-body {
+			grid-template-columns: 50px 1fr;
+			min-height: 400px;
+		}
+		
+		.day-header {
+			padding: 6px 2px;
+			font-size: 10px;
+		}
+		
+		.time-label {
+			font-size: 9px;
+		}
+		
+		.section {
+			padding: 1px 2px;
+			font-size: 9px;
+		}
+		
+		.section-time {
+			font-size: 8px;
+		}
+		
+		.section-instructor {
+			font-size: 8px;
+			margin-top: 1px;
+		}
+	}
 </style>

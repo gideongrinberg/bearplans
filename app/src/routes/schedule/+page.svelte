@@ -9,14 +9,14 @@
 	let selectedCatalog: string = $state('');
 	let selectedCourses: string[] = $state([]);
 	let currentScheduleIndex = $state(0);
-	
+
 	onMount(() => {
 		let urlParams = new URLSearchParams(window.location.search);
 		selectedCatalog = urlParams.get('catalog') ?? 'Fall 2025 Undergraduate';
 		selectedCourses = JSON.parse(urlParams.get('courses') ?? '[]');
 	});
 
-	const getSchedules = async (courses: string[]) => {
+	const getSchedules = async (courses: string[]): Promise<Section[][]> => {
 		let catalog = data.catalogData[selectedCatalog];
 		return new Promise((resolve, reject) => {
 			resolve(getValidSchedules(courses, catalog));
@@ -54,32 +54,33 @@
 			{#if schedules.length > 0}
 				<div class="schedule-controls">
 					{#if schedules.length > 1}
-						<button class="btn" onclick={() => prevSchedule(schedules.length)}>
-							← Previous
-						</button>
+						<button class="btn" onclick={() => prevSchedule(schedules.length)}> ← Previous </button>
 					{/if}
-					
+
 					<div class="schedule-info">
 						<span class="schedule-counter">
 							Schedule {currentScheduleIndex + 1} of {schedules.length}
 						</span>
 					</div>
-					
+
 					{#if schedules.length > 1}
-						<button class="btn" onclick={() => nextSchedule(schedules.length)}>
-							Next →
-						</button>
+						<button class="btn" onclick={() => nextSchedule(schedules.length)}> Next → </button>
 					{/if}
 				</div>
 
 				<div class="schedule-wrapper">
-					<Schedule schedule={schedules[currentScheduleIndex]}></Schedule>
+					{#key currentScheduleIndex}
+						<Schedule schedule={schedules[currentScheduleIndex]}></Schedule>
+					{/key}
 				</div>
 			{:else}
 				<div class="page-card">
 					<div class="no-schedules">
 						<h3>No Valid Schedules Found</h3>
-						<p>Unfortunately, there are no valid schedules possible with your selected courses due to time conflicts.</p>
+						<p>
+							Unfortunately, there are no valid schedules possible with your selected courses due to
+							time conflicts.
+						</p>
 						<p>Try removing some courses or selecting different sections.</p>
 					</div>
 				</div>
@@ -87,9 +88,7 @@
 		{/await}
 
 		<div class="navigation">
-			<button class="btn" onclick={goBack}>
-				← Back to Courses
-			</button>
+			<button class="btn" onclick={goBack}> ← Back to Courses </button>
 			<div class="step-indicator">
 				<span>Step 3 of 3</span>
 			</div>
@@ -101,9 +100,7 @@
 		<div class="no-courses">
 			<h3>No Courses Selected</h3>
 			<p>Please go back and select some courses to generate schedules.</p>
-			<button class="btn btn-primary" onclick={goBack}>
-				Select Courses
-			</button>
+			<button class="btn btn-primary" onclick={goBack}> Select Courses </button>
 		</div>
 	</div>
 {/if}
@@ -173,21 +170,28 @@
 	}
 
 	@keyframes spin {
-		0% { transform: rotate(0deg); }
-		100% { transform: rotate(360deg); }
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
 	}
 
-	.no-schedules, .no-courses {
+	.no-schedules,
+	.no-courses {
 		text-align: center;
 		padding: 2rem;
 	}
 
-	.no-schedules h3, .no-courses h3 {
+	.no-schedules h3,
+	.no-courses h3 {
 		color: #dc2626;
 		margin-bottom: 1rem;
 	}
 
-	.no-schedules p, .no-courses p {
+	.no-schedules p,
+	.no-courses p {
 		color: #6b7280;
 		margin-bottom: 1rem;
 	}
@@ -198,32 +202,32 @@
 		border-radius: 12px;
 		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 	}
-	
+
 	@media (max-width: 768px) {
 		.schedule-controls {
 			flex-direction: column;
 			gap: 1rem;
 			text-align: center;
 		}
-		
+
 		.schedule-controls .btn {
 			width: 100%;
 		}
-		
+
 		.schedule-info {
 			order: -1;
 		}
 	}
-	
+
 	@media (max-width: 480px) {
 		.schedule-header .page-title {
 			font-size: 1.5rem;
 		}
-		
+
 		.schedule-controls {
 			padding: 1rem;
 		}
-		
+
 		.navigation {
 			padding: 1rem;
 		}
