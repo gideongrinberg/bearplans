@@ -15,7 +15,7 @@
 <div class="page-card">
 	<h1 class="page-title">Course Scheduler</h1>
 	<p class="subtitle">Select your semester to get started planning your schedule.</p>
-	
+
 	<div class="form-group">
 		<label for="catalogSelect" class="form-label">Select a semester:</label>
 		<select id="catalogSelect" class="form-select" bind:value={selectedCatalog}>
@@ -24,14 +24,12 @@
 			{/each}
 		</select>
 	</div>
-	
+
 	<div class="navigation">
 		<div class="step-indicator">
 			<span>Step 1 of 3</span>
 		</div>
-		<button class="btn btn-primary" onclick={goToNext}>
-			Select Courses →
-		</button>
+		<button class="btn btn-primary" onclick={goToNext}> Select Courses → </button>
 	</div>
 </div>
 

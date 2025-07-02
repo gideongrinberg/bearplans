@@ -26,8 +26,11 @@
 {#if urlParams}
 	<div class="page-card">
 		<h1 class="page-title">Select Courses</h1>
-		<p class="subtitle">Choose the courses you want to include in your schedule for <strong>{selectedCatalog}</strong>.</p>
-		
+		<p class="subtitle">
+			Choose the courses you want to include in your schedule for <strong>{selectedCatalog}</strong
+			>.
+		</p>
+
 		<div class="form-group">
 			<label class="form-label">Available Courses:</label>
 			<div class="svelecte-wrapper">
@@ -48,10 +51,10 @@
 					{#each selectedCourses as course}
 						<div class="course-chip">
 							{course}
-							<button 
+							<button
 								class="remove-btn"
 								onclick={() => {
-									selectedCourses = selectedCourses.filter(c => c !== course);
+									selectedCourses = selectedCourses.filter((c) => c !== course);
 								}}
 								aria-label="Remove {course}"
 							>
@@ -64,17 +67,11 @@
 		{/if}
 
 		<div class="navigation">
-			<button class="btn" onclick={goBack}>
-				← Back
-			</button>
+			<button class="btn" onclick={goBack}> ← Back </button>
 			<div class="step-indicator">
 				<span>Step 2 of 3</span>
 			</div>
-			<button 
-				class="btn btn-primary" 
-				onclick={goToNext}
-				disabled={selectedCourses.length === 0}
-			>
+			<button class="btn btn-primary" onclick={goToNext} disabled={selectedCourses.length === 0}>
 				View Schedules →
 			</button>
 		</div>
@@ -162,17 +159,17 @@
 		transform: none;
 		box-shadow: none;
 	}
-	
+
 	@media (max-width: 768px) {
 		.course-grid {
 			gap: 0.375rem;
 		}
-		
+
 		.course-chip {
 			font-size: 0.8rem;
 			padding: 0.375rem 0.5rem;
 		}
-		
+
 		.remove-btn {
 			width: 16px;
 			height: 16px;

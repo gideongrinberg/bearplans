@@ -4,7 +4,7 @@ This web app allows a student to select the courses they wish to take and then g
 
 ## Developing
 
-To install the project's dependencies, simply run `yarn`. Then, run `yarn dev`, which will start a development server. Open [http://localhost:5173/](http://localhost:5173/) to view the app. 
+To install the project's dependencies, simply run `yarn`. Then, run `yarn dev`, which will start a development server. Open [http://localhost:5173/](http://localhost:5173/) to view the app.
 
 ### Scraper
 
