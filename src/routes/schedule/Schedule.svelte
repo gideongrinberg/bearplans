@@ -26,6 +26,9 @@
 	minTime = Math.floor(minTime / 60) * 60;
 	maxTime = Math.ceil(maxTime / 60) * 60;
 
+	minTime = Math.min(minTime, 8*60);
+	maxTime = Math.max(maxTime, 15*60);
+
 	// Generate time labels
 	const timeLabels = [];
 	for (let t = minTime; t <= maxTime; t += 60) {
