@@ -2,7 +2,8 @@ import { goto } from '$app/navigation';
 import { base } from '$app/paths';
 
 const gotoBase = (path: string) => {
-	goto(`${base}/${path}`);
+	const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+	goto(`${base}/${cleanPath}`);
 };
 
 export { gotoBase as goto };
