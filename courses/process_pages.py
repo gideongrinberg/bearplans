@@ -10,7 +10,7 @@ pages_dir = Path(os.path.dirname(__file__)) / "pages"
 catalogs_dir = Path(os.path.dirname(__file__)) / "catalogs"
 try:
     os.mkdir(catalogs_dir)
-except:
+except: # noqa: E722
     pass
 
 title_regex = re.compile(r"^([A-Z\-]+)\s+(\d{4})(?:-([A-Z0-9]+))?\s+-\s+(.*)$")
