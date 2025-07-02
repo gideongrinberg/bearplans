@@ -49,6 +49,23 @@
 		});
 	});
 
+	const sectionColors = {};
+	const colors = [
+		'#BA0C2F',
+		'#215732',
+		'#007D8A',
+		'#F1B434',
+		'#FF6D6A',
+		'#971B2F',
+		'#13322B',
+		'#B5E3D8'
+	];
+
+	for (let i = 0; i < schedule.length; i++) {
+		const section = schedule[i];
+		sectionColors[section.id] = colors[i % colors.length];
+	}
+
 	function shouldHideInstructor(section) {
 		const totalMinutes = maxTime - minTime;
 		const heightPercent = ((section.end - section.start) / totalMinutes) * 100;
@@ -73,19 +90,10 @@
 		return `${displayHour}:${min.toString().padStart(2, '0')} ${ampm}`;
 	}
 
-	function getColor(index) {
-		const colors = [
-			'#BA0C2F',
-			'#215732',
-			'#007D8A',
-			'#F1B434',
-			'#FF6D6A',
-			'#971B2F',
-			'#13322B',
-			'#B5E3D8'
-		];
-		return colors[index % colors.length];
-	}
+	// function getColor(index) {
+	// 	const colors =
+	// 	return colors[index % colors.length];
+	// }
 </script>
 
 <div class="schedule-container">
@@ -110,8 +118,10 @@
 						{#each sections as section, i}
 							<div
 								class="section"
-								style="{getSectionStyle(section)} background-color: {getColor(i)};"
-								title="{section.id} ({formatTime(section.start)} - {formatTime(section.end)}){section.instructor ? `, taught by ${section.instructor}` : ''}"
+								style="{getSectionStyle(section)} background-color: {sectionColors[section.id]};"
+								title="{section.id} ({formatTime(section.start)} - {formatTime(
+									section.end
+								)}){section.instructor ? `, taught by ${section.instructor}` : ''}"
 							>
 								<div class="section-time">
 									{formatTime(section.start)} - {formatTime(section.end)}
