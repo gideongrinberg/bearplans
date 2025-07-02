@@ -84,6 +84,7 @@
 		color: #6b7280;
 		margin-bottom: 2rem;
 		font-size: 1.125rem;
+		font-weight: 300;
 	}
 
 	.svelecte-wrapper {
@@ -97,8 +98,8 @@
 	}
 
 	.svelecte-wrapper :global(.svelecte:focus-within) {
-		border-color: #4f46e5;
-		box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+		border-color: var(--washu-red);
+		box-shadow: 0 0 0 3px rgba(186, 12, 47, 0.1);
 	}
 
 	.selected-courses {
@@ -106,9 +107,10 @@
 	}
 
 	.selected-title {
+		font-family: var(--font-heading);
 		font-size: 1.125rem;
 		font-weight: 600;
-		color: #374151;
+		color: var(--washu-black);
 		margin-bottom: 1rem;
 	}
 
@@ -122,8 +124,8 @@
 		display: inline-flex;
 		align-items: center;
 		gap: 0.5rem;
-		background: #ede9fe;
-		color: #5b21b6;
+		background: var(--washu-mint);
+		color: var(--washu-green);
 		padding: 0.5rem 0.75rem;
 		border-radius: 6px;
 		font-size: 0.875rem;
@@ -137,8 +139,8 @@
 		width: 18px;
 		height: 18px;
 		border: none;
-		background: rgba(91, 33, 182, 0.2);
-		color: #5b21b6;
+		background: rgba(33, 87, 50, 0.2);
+		color: var(--washu-green);
 		border-radius: 50%;
 		cursor: pointer;
 		font-size: 14px;
@@ -147,7 +149,7 @@
 	}
 
 	.remove-btn:hover {
-		background: rgba(91, 33, 182, 0.3);
+		background: rgba(33, 87, 50, 0.3);
 	}
 
 	.btn:disabled {

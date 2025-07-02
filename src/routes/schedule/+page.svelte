@@ -119,7 +119,8 @@
 	}
 
 	.schedule-header .page-title {
-		color: white;
+		font-family: var(--font-heading);
+		color: var(--washu-white);
 		text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 		margin-bottom: 0.5rem;
 	}
@@ -127,6 +128,7 @@
 	.subtitle {
 		color: rgba(255, 255, 255, 0.9);
 		font-size: 1.125rem;
+		font-weight: 300;
 		margin: 0;
 	}
 
@@ -143,7 +145,7 @@
 
 	.schedule-info {
 		font-weight: 500;
-		color: #374151;
+		color: var(--washu-black);
 	}
 
 	.schedule-counter {
@@ -162,8 +164,8 @@
 	.loading-spinner {
 		width: 40px;
 		height: 40px;
-		border: 4px solid #e5e7eb;
-		border-top: 4px solid #4f46e5;
+		border: 4px solid var(--washu-gray);
+		border-top: 4px solid var(--washu-red);
 		border-radius: 50%;
 		animation: spin 1s linear infinite;
 		margin: 0 auto 1rem;
@@ -186,7 +188,8 @@
 
 	.no-schedules h3,
 	.no-courses h3 {
-		color: #dc2626;
+		font-family: var(--font-heading);
+		color: var(--washu-red);
 		margin-bottom: 1rem;
 	}
 

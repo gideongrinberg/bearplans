@@ -39,5 +39,6 @@
 		color: #6b7280;
 		margin-bottom: 2rem;
 		font-size: 1.125rem;
+		font-weight: 300;
 	}
 </style>

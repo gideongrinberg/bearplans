@@ -66,17 +66,16 @@
 		return `${displayHour}:${min.toString().padStart(2, '0')} ${ampm}`;
 	}
 
-	// Generate color for section
 	function getColor(index) {
 		const colors = [
-			'#3b82f6',
-			'#10b981',
-			'#f59e0b',
-			'#ef4444',
-			'#8b5cf6',
-			'#ec4899',
-			'#06b6d4',
-			'#84cc16'
+			'#BA0C2F',
+			'#215732',
+			'#007D8A',
+			'#F1B434',
+			'#FF6D6A',
+			'#971B2F',
+			'#13322B',
+			'#B5E3D8'
 		];
 		return colors[index % colors.length];
 	}
@@ -149,7 +148,7 @@
 		padding: 12px;
 		text-align: center;
 		font-weight: 600;
-		color: #374151;
+		color: var(--washu-black);
 		border-right: 1px solid #e5e7eb;
 	}
 
@@ -174,6 +173,7 @@
 		font-size: 12px;
 		color: #6b7280;
 		transform: translateY(-50%);
+		font-weight: 500;
 	}
 
 	.time-label:nth-child(1) {
@@ -234,12 +234,15 @@
 		color: white;
 		font-size: 13px;
 		overflow: hidden;
-		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+		border: 1px solid rgba(255, 255, 255, 0.1);
 	}
 
 	.section-time {
 		font-weight: 500;
-		font-size: 12px;
+		font-size: 11px;
+		margin: 0px;
+		line-height: 1;
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
@@ -248,7 +251,8 @@
 	.section-instructor {
 		font-size: 11px;
 		opacity: 0.9;
-		margin-top: 2px;
+		margin: 0px;
+		line-height: 1;
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
