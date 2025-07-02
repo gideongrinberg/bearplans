@@ -12,7 +12,7 @@
 
 	onMount(() => {
 		let urlParams = new URLSearchParams(window.location.search);
-		selectedCatalog = urlParams.get('catalog') ?? 'Fall 2025 Undergraduate';
+		selectedCatalog = urlParams.get('catalog') ?? 'Fall 2025';
 		selectedCourses = JSON.parse(urlParams.get('courses') ?? '[]');
 	});
 

@@ -4,7 +4,7 @@
 
 	let { data }: PageProps = $props();
 	// svelte-ignore non_reactive_update
-	let selectedCatalog = 'Fall 2025 Undergraduate';
+	let selectedCatalog = 'Fall 2025';
 	const catalogs = data.catalogs;
 
 	function goToNext() {

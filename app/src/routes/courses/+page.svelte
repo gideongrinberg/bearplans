@@ -6,7 +6,7 @@
 	const { data } = $props();
 	let selectedCourses: string[] = $state([]);
 	let urlParams: URLSearchParams | undefined = $state();
-	let selectedCatalog = $derived(urlParams?.get('catalog') ?? 'Fall 2025 Undergraduate');
+	let selectedCatalog = $derived(urlParams?.get('catalog') ?? 'Fall 2025');
 	onMount(() => {
 		urlParams = new URLSearchParams(window.location.search);
 	});

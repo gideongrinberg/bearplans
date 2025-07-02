@@ -43,5 +43,5 @@ def get_sections_dict(df: pl.DataFrame):
     return sections
 
 if __name__ == "__main__":
-    with open(Path(os.path.dirname(__file__)) / "catalogs.json", "w") as f:
+    with open(Path(os.path.dirname(__file__)) / "../app/src/lib/data/catalogs.json", "w") as f:
         json.dump(load_catalogs(), f)
