@@ -1,1 +1,8 @@
-// place files you want to import through the `$lib` alias in this folder.
+import { goto } from "$app/navigation";
+import { base } from "$app/paths";
+
+const gotoBase = (path: string) => {
+    goto(`${base}/${path}`)
+};
+
+export { gotoBase as goto };

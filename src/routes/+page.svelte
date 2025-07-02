@@ -1,6 +1,8 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
+	import { goto } from '$lib';
+	import { onMount } from 'svelte';
 	import type { PageProps } from './$types';
+	import { base } from '$app/paths';
 
 	let { data }: PageProps = $props();
 	// svelte-ignore non_reactive_update
@@ -10,6 +12,10 @@
 	function goToNext() {
 		goto(`/courses?catalog=${encodeURIComponent(selectedCatalog)}`);
 	}
+
+	onMount(() => {
+		console.log(base);
+	})
 </script>
 
 <div class="page-card">

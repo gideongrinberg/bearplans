@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
+	import { goto } from '$lib';
 	import Svelecte from 'svelecte';
 	import { onMount } from 'svelte';
 

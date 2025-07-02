@@ -2,7 +2,7 @@
 	import type { Catalog, Section } from '$lib/catalog';
 	import { getValidSchedules } from '$lib/schedule';
 	import { onMount } from 'svelte';
-	import { goto } from '$app/navigation';
+	import { goto } from '$lib';
 	import Schedule from './Schedule.svelte';
 
 	let { data } = $props();
